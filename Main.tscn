@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Stone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fish.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Mafi.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -152, 655, 0, 0, 0, 0, -151, 73 )
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -9,12 +16,15 @@ __meta__ = {
 "_edit_vertical_guides_": [ 1281.0 ]
 }
 stone_scene = ExtResource( 2 )
+fish_scene = ExtResource( 3 )
+
+[node name="Mafi" parent="." instance=ExtResource( 4 )]
 
 [node name="RockTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 3.0
 
 [node name="FishTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 3.0
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -22,3 +32,21 @@ one_shot = true
 
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 1110, 360 )
+
+[node name="RockPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="RockSpawnLocation" type="PathFollow2D" parent="RockPath"]
+position = Vector2( -152, 655 )
+rotation = -1.56907
+
+[node name="FishPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="FishSpawnLocation" type="PathFollow2D" parent="FishPath"]
+position = Vector2( -152, 655 )
+rotation = -1.56907
+
+[connection signal="timeout" from="RockTimer" to="." method="_on_RockTimer_timeout"]
+[connection signal="timeout" from="FishTimer" to="." method="_on_FishTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

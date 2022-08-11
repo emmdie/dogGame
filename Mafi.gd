@@ -14,7 +14,11 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 
-
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
+	
 func _process(delta):
 	var velocity = Vector2.ZERO #the players movement vector
 	if Input.is_action_pressed("move_down"):
@@ -32,10 +36,14 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 
 func _on_Mafi_body_entered(body):
-	pass # Replace with function body.
+	hide()
+	emit_signal("hit")
+	$CollisionShape2D.set_deferred("disabled", true)

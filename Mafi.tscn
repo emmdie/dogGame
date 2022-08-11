@@ -3,6 +3,10 @@
 [ext_resource path="res://assets/dog/dog.png" type="Texture" id=1]
 [ext_resource path="res://Mafi.gd" type="Script" id=2]
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 36.0
+height = 160.0
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
@@ -11,15 +15,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 36.0
-height = 160.0
-
 [node name="Mafi" type="Area2D"]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_vertical_guides_": [ 169.0 ]
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 10, -13 )
+rotation = 1.5708
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 18.2703, -2.00001 )
@@ -27,7 +32,4 @@ rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 10, -13 )
-rotation = 1.5708
-shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_Mafi_body_entered"]
