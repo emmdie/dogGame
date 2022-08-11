@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Stone.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1281.0 ]
+}
+stone_scene = ExtResource( 2 )
 
 [node name="RockTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -14,3 +19,6 @@ wait_time = 0.5
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 1110, 360 )

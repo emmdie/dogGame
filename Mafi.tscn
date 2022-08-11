@@ -13,17 +13,21 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 36.0
-height = 174.0
+height = 160.0
 
 [node name="Mafi" type="Area2D"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 169.0 ]
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 18.2703, -2.00001 )
 rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2, -11 )
+position = Vector2( 10, -13 )
 rotation = 1.5708
 shape = SubResource( 2 )
