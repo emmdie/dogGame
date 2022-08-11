@@ -1,5 +1,7 @@
 extends Area2D
 
+signal hit
+
 export var speed = 400
 var screen_size
 # Declare member variables here. Examples:
@@ -10,6 +12,7 @@ var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
 
 
 func _process(delta):
@@ -32,3 +35,7 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Mafi_body_entered(body):
+	pass # Replace with function body.
