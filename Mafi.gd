@@ -38,7 +38,7 @@ func _process(delta):
 		$AnimatedSprite.stop()
 	
 	position += velocity * delta
-	position.y = clamp(position.y, 0, screen_size.y)
+	position.y = clamp(position.y, 72, screen_size.y - 75)
 
 
 

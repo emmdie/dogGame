@@ -20,6 +20,7 @@ size = 80
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_horizontal_guides_": [ 656.0, 721.0, 74.0 ],
 "_edit_vertical_guides_": [ 1281.0 ]
 }
 stone_scene = ExtResource( 2 )
