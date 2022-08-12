@@ -18,6 +18,7 @@ animations = [ {
 [node name="Fish" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
 gravity_scale = 0.0
+linear_damp = 0.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_vertical_guides_": [ 36.0 ]

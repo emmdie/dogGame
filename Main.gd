@@ -81,6 +81,6 @@ func _on_FishTimer_timeout():
 func _on_Mafi_collected():
 	score += 1
 	$HUD.update_score(score)
-	$FishCoughtSound.pitch_scale = rand_range(0.9, 1.5)
-	print(str($FishCoughtSound.pitch_scale))
+	$FishCoughtSound.pitch_scale = rand_range(0.9, 1.2)
+	#print(str($FishCoughtSound.pitch_scale))
 	$FishCoughtSound.play()
