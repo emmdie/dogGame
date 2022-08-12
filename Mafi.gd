@@ -28,7 +28,8 @@ func _process(delta):
 		velocity.y -= 1
 		
 	if Input.is_action_pressed("ui_menu"):
-		get_tree().paused = !get_tree().paused
+		emit_signal("showUnpauseButton")
+		get_tree().paused = true
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -46,11 +47,14 @@ func _process(delta):
 #func _process(delta):
 #	pass
 
-
-
+func _on_UnpauseButton_button_down():
+	get_tree().paused = false
 
 
 func _on_Mafi_body_entered(body):
+	hide()
+	emit_signal("hit")
+	$CollisionShape2D.set_deferred("disabled", true)
 	print("entered")
 	if (body.get_name() == "Stone"):
 		print("stone")
