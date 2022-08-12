@@ -18,35 +18,38 @@ __meta__ = {
 stone_scene = ExtResource( 2 )
 fish_scene = ExtResource( 3 )
 
-[node name="Mafi" parent="." instance=ExtResource( 4 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RockTimer" type="Timer" parent="."]
+[node name="Mafi" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="RockTimer" type="Timer" parent="CanvasLayer"]
 wait_time = 3.0
 
 [node name="FishTimer" type="Timer" parent="."]
 wait_time = 3.5
 
-[node name="StartTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="CanvasLayer"]
 wait_time = 2.0
 one_shot = true
 
-[node name="StartPosition" type="Position2D" parent="."]
+[node name="StartPosition" type="Position2D" parent="CanvasLayer"]
 position = Vector2( 1110, 360 )
 
-[node name="RockPath" type="Path2D" parent="."]
+[node name="RockPath" type="Path2D" parent="CanvasLayer"]
 curve = SubResource( 1 )
 
-[node name="RockSpawnLocation" type="PathFollow2D" parent="RockPath"]
+[node name="RockSpawnLocation" type="PathFollow2D" parent="CanvasLayer/RockPath"]
 position = Vector2( -152, 655 )
 rotation = -1.56907
 
-[node name="FishPath" type="Path2D" parent="."]
+[node name="FishPath" type="Path2D" parent="CanvasLayer"]
 curve = SubResource( 1 )
 
-[node name="FishSpawnLocation" type="PathFollow2D" parent="FishPath"]
+[node name="FishSpawnLocation" type="PathFollow2D" parent="CanvasLayer/FishPath"]
 position = Vector2( -152, 655 )
 rotation = -1.56907
 
-[connection signal="timeout" from="RockTimer" to="." method="_on_RockTimer_timeout"]
-[connection signal="timeout" from="FishTimer" to="." method="_on_FishTimer_timeout"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="CanvasLayer/RockTimer" to="." method="_on_RockTimer_timeout"]
+[connection signal="timeout" from="CanvasLayer/FishTimer" to="." method="_on_FishTimer_timeout"]
+[connection signal="timeout" from="CanvasLayer/StartTimer" to="." method="_on_StartTimer_timeout"]
