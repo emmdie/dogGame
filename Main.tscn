@@ -30,7 +30,7 @@ fish_scene = ExtResource( 3 )
 wait_time = 3.0
 
 [node name="FishTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 3.5
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0

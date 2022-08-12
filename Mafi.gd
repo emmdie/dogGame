@@ -1,6 +1,7 @@
 extends Area2D
 
 signal hit
+signal collected
 
 export var speed = 400
 var screen_size
@@ -46,12 +47,21 @@ func _process(delta):
 #func _process(delta):
 #	pass
 
+func _on_UnpauseButton_button_down():
+	get_tree().paused = false
+
 
 func _on_Mafi_body_entered(body):
 	hide()
 	emit_signal("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
-
-
-func _on_UnpauseButton_button_down():
-	get_tree().paused = false
+	print("entered")
+	if (body.get_name() == "Stone"):
+		print("stone")
+		hide()
+		emit_signal("hit")
+		$CollisionShape2D.set_deferred("disabled", true)
+	else:
+		print("not stone")
+		emit_signal("collected")
+		#set_deferred(str(body.get_child("CollisionShape2D").disabled), true)

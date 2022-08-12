@@ -1,5 +1,6 @@
 extends Node
 
+
 export(PackedScene) var stone_scene
 export(PackedScene) var fish_scene
 var score
@@ -53,6 +54,7 @@ func _on_RockTimer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(stone)
+	
 
 
 
@@ -70,3 +72,9 @@ func _on_FishTimer_timeout():
 	fish.linear_velocity = velocity.rotated(direction)
 	
 	add_child(fish)
+	
+
+
+
+
+
