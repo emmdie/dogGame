@@ -9,7 +9,6 @@ var screen_size
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -28,7 +27,7 @@ func _process(delta):
 		velocity.y -= 1
 		
 	if Input.is_action_pressed("ui_menu"):
-		emit_signal("showUnpauseButton")
+		emit_signal("unpause")
 		get_tree().paused = true
 	
 	if velocity.length() > 0:
@@ -46,10 +45,6 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-func _on_UnpauseButton_button_down():
-	get_tree().paused = false
-
 
 func _on_Mafi_body_entered(body):
 	print(body.get_name())
