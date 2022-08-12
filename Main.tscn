@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Stone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fish.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mafi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -18,7 +19,13 @@ __meta__ = {
 stone_scene = ExtResource( 2 )
 fish_scene = ExtResource( 3 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Mafi" parent="." instance=ExtResource( 4 )]
+
 
 [node name="Mafi" parent="CanvasLayer" instance=ExtResource( 4 )]
 
@@ -50,6 +57,13 @@ curve = SubResource( 1 )
 position = Vector2( -152, 655 )
 rotation = -1.56907
 
-[connection signal="timeout" from="CanvasLayer/RockTimer" to="." method="_on_RockTimer_timeout"]
-[connection signal="timeout" from="CanvasLayer/FishTimer" to="." method="_on_FishTimer_timeout"]
-[connection signal="timeout" from="CanvasLayer/StartTimer" to="." method="_on_StartTimer_timeout"]
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[connection signal="collected" from="Mafi" to="." method="_on_Mafi_collected"]
+[connection signal="hit" from="Mafi" to="." method="game_over"]
+[connection signal="timeout" from="RockTimer" to="." method="_on_RockTimer_timeout"]
+[connection signal="timeout" from="FishTimer" to="." method="_on_FishTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
+

@@ -60,4 +60,4 @@ func _on_Mafi_body_entered(body):
 	else:
 		print("not stone")
 		emit_signal("collected")
-		#set_deferred(str(body.get_child("CollisionShape2D").disabled), true)
+		body.queue_free()
