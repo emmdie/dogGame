@@ -26,6 +26,9 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
+		
+	if Input.is_action_pressed("ui_menu"):
+		get_tree().paused = !get_tree().paused
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
