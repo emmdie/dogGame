@@ -1,6 +1,7 @@
 extends RigidBody2D
+class_name Stone
 
-
+signal hit
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -21,3 +22,7 @@ func _ready():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free() # Replace with function body.
+
+
+
+
