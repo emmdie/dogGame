@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Stone.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UnpauseButton.gd" type="Script" id=6]
 [ext_resource path="res://assets/music/Prairie Oyster.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/Sounds/FishCaught.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/Sounds/GameOver.wav" type="AudioStream" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -80,6 +81,9 @@ stream = ExtResource( 7 )
 
 [node name="FishCoughtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="GameOverPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="collected" from="Mafi" to="." method="_on_Mafi_collected"]
 [connection signal="hit" from="Mafi" to="." method="game_over"]

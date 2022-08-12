@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "RigidBody2D",
-"class": "Stone",
-"language": "GDScript",
-"path": "res://Stone.gd"
-} ]
-_global_script_class_icons={
-"Stone": ""
-}
-
 [application]
 
 config/name="Dog Game"

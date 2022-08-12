@@ -12,6 +12,8 @@ func game_over():
 	$RockTimer.stop()
 	$FishTimer.stop()
 	$HUD.show_game_over()
+	$GameOverPlayer.pitch_scale = rand_range(0.9, 1.5)
+	$GameOverPlayer.play()
 	get_tree().call_group("mobs", "queue_free")
 	$Music.stop()
 
