@@ -52,16 +52,14 @@ func _on_UnpauseButton_button_down():
 
 
 func _on_Mafi_body_entered(body):
-	hide()
-	emit_signal("hit")
-	$CollisionShape2D.set_deferred("disabled", true)
-	print("entered")
-	if (body.get_name() == "Stone"):
-		print("stone")
+	print(body.get_name())
+	if (body.get_name().matchn("*Stone*")):
+		print("stone collosion")
+
 		hide()
 		emit_signal("hit")
 		$CollisionShape2D.set_deferred("disabled", true)
 	else:
-		print("not stone")
+		print("fish collision")
 		emit_signal("collected")
 		body.queue_free()
