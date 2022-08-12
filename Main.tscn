@@ -4,8 +4,10 @@
 [ext_resource path="res://Stone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fish.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mafi.tscn" type="PackedScene" id=4]
+
 [ext_resource path="res://assets/fonts/sunny-spells-font/SunnyspellsRegular-MV9ze.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://UnpauseButton.gd" type="Script" id=6]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -24,7 +26,12 @@ __meta__ = {
 stone_scene = ExtResource( 2 )
 fish_scene = ExtResource( 3 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="Mafi" parent="." instance=ExtResource( 4 )]
+
 
 [node name="RockTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -68,7 +75,13 @@ custom_fonts/font = SubResource( 2 )
 text = "Unpause"
 script = ExtResource( 6 )
 
+[connection signal="button_down" from="UnpauseButton" to="Mafi" method="_on_UnpauseButton_button_down"]
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[connection signal="collected" from="Mafi" to="." method="_on_Mafi_collected"]
+[connection signal="hit" from="Mafi" to="." method="game_over"]
 [connection signal="timeout" from="RockTimer" to="." method="_on_RockTimer_timeout"]
 [connection signal="timeout" from="FishTimer" to="." method="_on_FishTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="button_down" from="UnpauseButton" to="Mafi" method="_on_UnpauseButton_button_down"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
